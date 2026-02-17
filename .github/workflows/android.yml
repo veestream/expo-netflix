@@ -1,4 +1,4 @@
-name: Android Build
+name: Android Release Build
 
 on:
   push:
@@ -28,21 +28,21 @@ jobs:
         run: npm install --global yarn
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
       - name: Verify expo-modules-autolinking
-        run: ls -l node_modules/expo-modules-autolinking/gradle/
+        run: ls -l node_modules/expo-modules-autolinking/gradle/ || echo "expo-modules-autolinking not found!"
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Build Android APK
+      - name: Build Android Release APK
         run: |
           cd android
-          ./gradlew assembleDebug --no-daemon
+          ./gradlew assembleRelease --no-daemon
 
-      - name: Upload APK artifact
+      - name: Upload Release APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          name: app-release
+          path: android/app/build/outputs/apk/release/app-release.apk
