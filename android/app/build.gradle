@@ -1,44 +1,47 @@
 apply plugin: "com.android.application"
+apply plugin: "com.facebook.react"
 
 import com.android.build.OutputFile
 
-project.ext.react = [
-    entryFile: "index.js"
-]
-
-apply from: "../../node_modules/react-native/react.gradle"
-
 android {
+    namespace "com.exponetflix"
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
         applicationId "com.exponetflix"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "0.0.2"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
-            shrinkResources false
+            // Enables Proguard for release builds
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
+        debug {
+            // Debug build keeps resources unshrinked
+            minifyEnabled false
+        }
+    }
+
+    packagingOptions {
+        pickFirst "**/*.so"
+        pickFirst "**/*.jar"
     }
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation("com.facebook.react:react-android")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
 
-    // React Native core
-    implementation "com.facebook.react:react-native:+"
-
-    // Expo splash screen (required for Theme.SplashScreen)
-    implementation "expo.modules:splash-screen:0.18.2"
-
-    // Expo updates (already used in your manifest)
-    implementation "expo.modules:updates:0.18.15"
-
-    // Add other Expo modules here as needed
+    // Expo modules
+    implementation project(':expo-splash-screen')
+    implementation project(':expo-updates')
 }
+
+// Required for Expo autolinking
+apply from: new File(["node", "--print", "require.resolve('expo-modules-autolinking/package.json')"].execute(null, rootDir).text.trim(), "../scripts/autolinking.gradle")
