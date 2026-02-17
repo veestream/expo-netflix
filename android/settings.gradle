@@ -1,21 +1,17 @@
-rootProject.name = 'expo-netflix'
+pluginManagement {
+  repositories {
+    gradlePluginPortal()
+    google()
+    mavenCentral()
+  }
+  includeBuild("../node_modules/react-native-gradle-plugin")
+  includeBuild("../node_modules/expo-modules-autolinking")
+}
 
-include ':app'
+plugins {
+  id("com.facebook.react.settings") apply false
+  id("expo.modules.autolinking") apply false
+}
 
-// Expo modules autolinking
-apply from: new File(
-    ["node", "--print", "require.resolve('expo-modules-autolinking/package.json')"]
-        .execute(null, rootDir)
-        .text
-        .trim(),
-    "../gradle/autolinking.gradle"
-)
-useExpoModules()
-
-// Expo splash screen
-include ':expo-splash-screen'
-project(':expo-splash-screen').projectDir = new File(rootProject.projectDir, '../node_modules/expo-splash-screen/android')
-
-// Expo updates
-include ':expo-updates'
-project(':expo-updates').projectDir = new File(rootProject.projectDir, '../node_modules/expo-updates/android')
+rootProject.name = "expo-netflix"
+include(":app")
