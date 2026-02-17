@@ -6,7 +6,11 @@
     "slug": "netflixclone",
     "privacy": "public",
     "version": "0.0.2",
-    "platforms": ["android", "ios", "web"],
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ],
     "githubUrl": "https://github.com/calebnance/expo-netflix",
     "orientation": "portrait",
     "primaryColor": "#000000",
@@ -19,13 +23,17 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "android": {
-      "versionCode": 2
+      "versionCode": 2,
+      "package": "com.anonymous.netflixclone"
     },
     "ios": {
       "buildNumber": "0.0.2",
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.netflixclone"
     }
   }
 }

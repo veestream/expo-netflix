@@ -1,42 +1,22 @@
-import { Dimensions, Platform } from 'react-native';
+// src/constants/device.js
 
-// android
-const android = Platform.OS === 'android';
+import { Platform, Dimensions } from 'react-native';
 
-const iOS = Platform.OS === 'ios';
-const web = Platform.OS === 'web';
-const windowInfo = Dimensions.get('window');
-const { height, width } = windowInfo;
-const aspectRatio = height / width;
+const { height, width } = Dimensions.get('window');
 
-// is iPad
-const { isPad } = Platform;
-
-// is iPhone with Notch?
-// iPhoneX, iPhoneXs, iPhoneXr, iPhoneXs Max, iPhone 11, 12, 13, and 14
+// crude notch detection (safe default)
 let iPhoneNotch = false;
-if (iOS) {
-  // iphone screen breakdown
-  // https://blog.calebnance.com/development/iphone-ipad-pixel-sizes-guide-complete-list.html
-  if (
-    height === 812 ||
-    height === 844 ||
-    height === 852 ||
-    height === 896 ||
-    height === 926 ||
-    height === 932
-  ) {
+if (Platform.OS === 'ios') {
+  // iPhone X and newer have height >= 812 or width >= 812
+  if (height >= 812 || width >= 812) {
     iPhoneNotch = true;
   }
 }
 
-export default {
-  android,
-  aspectRatio,
-  height,
-  iOS,
+export const device = {
   iPhoneNotch,
-  isPad,
-  web,
-  width
+  isAndroid: Platform.OS === 'android',
+  isIOS: Platform.OS === 'ios',
+  screenHeight: height,
+  screenWidth: width,
 };

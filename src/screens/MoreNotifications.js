@@ -1,14 +1,10 @@
 import * as React from 'react';
-import { View } from 'react-native';
-import { colors, gStyle } from '../constants';
-
-// components
-import Header from '../components/Header';
+import { View, Text } from 'react-native';
 
 function MoreNotifications() {
   return (
-    <View style={gStyle.container}>
-      <Header bg={colors.headerBarBg} showBack title="Notifications" />
+    <View>
+      <Text>More Notifications Screen</Text>
     </View>
   );
 }

@@ -17,53 +17,36 @@ const Stack = createNativeStackNavigator();
 function RootStack() {
   return (
     <NavigationContainer theme={DarkTheme}>
-      <Stack.Navigator
-        screenOptions={{
-          presentation: 'fullScreenModal'
-        }}
-      >
+      <Stack.Navigator screenOptions={{ presentation: 'fullScreenModal' }}>
         <Stack.Screen
           name="TabNavigation"
           component={TabNavigation}
-          options={{
-            headerShown: false
-          }}
+          options={{ headerShown: false }}
         />
-
         <Stack.Screen
           name="ModalAddProfile"
           component={ModalAddProfile}
-          options={{
-            headerShown: false
-          }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="ModalCastConnect"
           component={ModalCastConnect}
-          options={{
-            headerShown: false
-          }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="ModalManageProfiles"
           component={ModalManageProfiles}
-          options={{
-            headerShown: false
-          }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="ModalVideo"
           component={ModalVideo}
-          options={{
-            headerShown: false
-          }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="ModalWebView"
           component={ModalWebView}
-          options={{
-            headerShown: false
-          }}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

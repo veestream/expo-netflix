@@ -1,25 +1,12 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
-import { gStyle } from '../constants';
+import { View, Text } from 'react-native';
 
-// components
-import Cast from '../components/Cast';
-import HeaderHome from '../components/HeaderHome';
-
-function Movies() {
+function MyList() {
   return (
-    <View style={gStyle.container}>
-      <HeaderHome show />
-
-      <View style={gStyle.spacer12} />
-
-      <View style={gStyle.pHHalf}>
-        <Text style={gStyle.heading}>Movies</Text>
-      </View>
-
-      <Cast />
+    <View>
+      <Text>My List Screen</Text>
     </View>
   );
 }
 
-export default Movies;
+export default MyList;

@@ -1,70 +1,56 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { colors, gStyle } from '../constants';
+import { Home, Search, Downloads, Menu } from '../icons';
 
-// grabs stacks
+// stacks
 import StackHome from './StackHome';
 import StackSearch from './StackSearch';
 import StackDownloads from './StackDownloads';
 import StackMore from './StackMore';
-
-// icons
-import SvgDownloads from '../icons/Svg.Downloads';
-import SvgHome from '../icons/Svg.Home';
-import SvgMenu from '../icons/Svg.Menu';
-import SvgSearch from '../icons/Svg.Search';
 
 const Tab = createBottomTabNavigator();
 
 function TabNavigation() {
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
-        headerShown: false,
+      screenOptions={{
         tabBarActiveTintColor: colors.white,
         tabBarInactiveTintColor: colors.inactiveGrey,
-        tabBarIcon: ({ color }) => {
-          let icon = <SvgHome fill={color} />;
-
-          if (route.name === 'StackSearch') {
-            icon = <SvgSearch fill={color} />;
-          } else if (route.name === 'StackDownloads') {
-            icon = <SvgDownloads fill={color} />;
-          } else if (route.name === 'StackMore') {
-            icon = <SvgMenu fill={color} />;
-          }
-
-          return icon;
-        },
-        tabBarStyle: gStyle.navTabStyle
-      })}
+        tabBarStyle: gStyle.navTabStyle,
+        headerShown: false,
+      }}
     >
       <Tab.Screen
-        name="StackHome"
+        name="HomeTab"
         component={StackHome}
         options={{
-          tabBarLabel: 'Home'
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color }) => <Home color={color} />,
         }}
       />
       <Tab.Screen
-        name="StackSearch"
+        name="SearchTab"
         component={StackSearch}
         options={{
-          tabBarLabel: 'Search'
+          tabBarLabel: 'Search',
+          tabBarIcon: ({ color }) => <Search color={color} />,
         }}
       />
       <Tab.Screen
-        name="StackDownloads"
+        name="DownloadsTab"
         component={StackDownloads}
         options={{
-          tabBarLabel: 'Downloads'
+          tabBarLabel: 'Downloads',
+          tabBarIcon: ({ color }) => <Downloads color={color} />,
         }}
       />
       <Tab.Screen
-        name="StackMore"
+        name="MoreTab"
         component={StackMore}
         options={{
-          tabBarLabel: 'More'
+          tabBarLabel: 'More',
+          tabBarIcon: ({ color }) => <Menu color={color} />,
         }}
       />
     </Tab.Navigator>
