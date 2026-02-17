@@ -1,47 +1,44 @@
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
-
-import com.android.build.OutputFile
+apply plugin: "expo.modules.autolinking"
 
 android {
     namespace "com.exponetflix"
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "com.exponetflix"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion 24
+        targetSdkVersion 34
         versionCode 2
         versionName "0.0.2"
     }
 
-    buildTypes {
+    signingConfigs {
         release {
-            // Enables Proguard for release builds
+            // Replace with your keystore details
+            storeFile file("release.keystore")
+            storePassword "YOUR_STORE_PASSWORD"
+            keyAlias "YOUR_KEY_ALIAS"
+            keyPassword "YOUR_KEY_PASSWORD"
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+        }
+        release {
+            signingConfig signingConfigs.release
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
-        debug {
-            // Debug build keeps resources unshrinked
-            minifyEnabled false
-        }
-    }
-
-    packagingOptions {
-        pickFirst "**/*.so"
-        pickFirst "**/*.jar"
     }
 }
 
 dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation("com.facebook.react:react-android")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-
-    // Expo modules
-    implementation project(':expo-splash-screen')
-    implementation project(':expo-updates')
+    implementation("com.facebook.react:hermes-android")
 }
-
-// Required for Expo autolinking
-apply from: new File(["node", "--print", "require.resolve('expo-modules-autolinking/package.json')"].execute(null, rootDir).text.trim(), "../scripts/autolinking.gradle")
