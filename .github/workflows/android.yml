@@ -3,8 +3,6 @@ name: Android Build
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -31,6 +29,9 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
 
       - name: Build Android APK
         run: |
