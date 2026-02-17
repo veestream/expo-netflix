@@ -1,56 +1,26 @@
-import * as React from 'react';
-import { DarkTheme, NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 
-// tab navigation
-import TabNavigation from './TabNavigation';
+// Import your screens
+import HomeScreen from '../screens/HomeScreen';
+import DetailsScreen from '../screens/DetailsScreen';
 
-// screens
-import ModalAddProfile from '../screens/ModalAddProfile';
-import ModalCastConnect from '../screens/ModalCastConnect';
-import ModalManageProfiles from '../screens/ModalManageProfiles';
-import ModalVideo from '../screens/ModalVideo';
-import ModalWebView from '../screens/ModalWebView';
+const Stack = createStackNavigator();
 
-const Stack = createNativeStackNavigator();
-
-function RootStack() {
+export default function RootStack() {
   return (
-    <NavigationContainer theme={DarkTheme}>
-      <Stack.Navigator screenOptions={{ presentation: 'fullScreenModal' }}>
-        <Stack.Screen
-          name="TabNavigation"
-          component={TabNavigation}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="ModalAddProfile"
-          component={ModalAddProfile}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="ModalCastConnect"
-          component={ModalCastConnect}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="ModalManageProfiles"
-          component={ModalManageProfiles}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="ModalVideo"
-          component={ModalVideo}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="ModalWebView"
-          component={ModalWebView}
-          options={{ headerShown: false }}
-        />
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerShown: false,
+          cardStyle: { backgroundColor: '#000000' },
+        }}
+      >
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-export default RootStack;

@@ -10,9 +10,11 @@
 
     <!-- Splash Screen Theme -->
     <style name="Theme.SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="windowSplashScreenBackground">@color/splashscreen_background</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/splashscreen_logo</item>
-        <item name="postSplashScreenTheme">@style/AppTheme</item>
+        <!-- Correct references to resources -->
+        <item name="android:windowSplashScreenBackground">@color/splashscreen_background</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splashscreen_logo</item>
+        <item name="android:postSplashScreenTheme">@style/AppTheme</item>
+        <!-- Enum value must be valid -->
         <item name="android:windowSplashScreenBehavior">icon_background</item>
     </style>
 

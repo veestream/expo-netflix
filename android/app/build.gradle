@@ -1,33 +1,44 @@
 apply plugin: "com.android.application"
 
+import com.android.build.OutputFile
+
+project.ext.react = [
+    entryFile: "index.js"
+]
+
+apply from: "../../node_modules/react-native/react.gradle"
+
 android {
-    namespace "com.exponetflix"
-    compileSdkVersion 34
+    compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
         applicationId "com.exponetflix"
-        minSdkVersion 24
-        targetSdkVersion 34
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-    }
-
-    sourceSets {
-        main {
-            manifest.srcFile "src/main/AndroidManifest.xml"
-        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            shrinkResources false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "com.facebook.react:react-android:0.81.0"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.22"
+
+    // React Native core
+    implementation "com.facebook.react:react-native:+"
+
+    // Expo splash screen (required for Theme.SplashScreen)
+    implementation "expo.modules:splash-screen:0.18.2"
+
+    // Expo updates (already used in your manifest)
+    implementation "expo.modules:updates:0.18.15"
+
+    // Add other Expo modules here as needed
 }

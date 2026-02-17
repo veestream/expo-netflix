@@ -21,6 +21,8 @@
       "resizeMode": "contain"
     },
     "updates": {
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
@@ -28,12 +30,16 @@
     ],
     "android": {
       "versionCode": 2,
-      "package": "com.anonymous.netflixclone"
+      "package": "com.exponetflix",
+      "adaptiveIcon": {
+        "foregroundImage": "src/assets/icon.png",
+        "backgroundColor": "#000000"
+      }
     },
     "ios": {
       "buildNumber": "0.0.2",
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.netflixclone"
+      "bundleIdentifier": "com.exponetflix"
     }
   }
 }
