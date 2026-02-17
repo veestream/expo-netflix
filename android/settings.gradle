@@ -8,10 +8,5 @@ pluginManagement {
   includeBuild("../node_modules/expo-modules-autolinking")
 }
 
-plugins {
-  id("com.facebook.react") apply false
-  id("expo.modules.autolinking") apply false
-}
-
 rootProject.name = "expo-netflix"
 include(":app")
