@@ -1,6 +1,7 @@
 buildscript {
     ext {
-        kotlin_version = "1.6.21"
+        // Pin Kotlin to 1.6.21 to match React Native Gradle plugin expectations
+        kotlin_version = "1.6.0"
     }
     repositories {
         google()
@@ -16,3 +17,6 @@ plugins {
     id("com.android.application") version "8.2.1" apply false
     id("com.facebook.react") apply false
 }
+
+rootProject.name = "expo-netflix"
+include(":app")
