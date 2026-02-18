@@ -1,23 +1,23 @@
-name: Android Release Build
+name: Android Build
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
+    branches:
+      - main
+  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 17
+          distribution: 'temurin'
+          java-version: '17'
 
       - name: Install Kotlin 1.6.21
         run: |
@@ -26,32 +26,11 @@ jobs:
           sdk install kotlin 1.6.0
           sdk use kotlin 1.6.0
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-
-      - name: Install Yarn
-        run: npm install --global yarn
-
-      # Install dependencies using Yarn only
-      - name: Install dependencies
+      - name: Install Yarn dependencies
         run: yarn install --frozen-lockfile
 
-      # Sanity check: confirm Expo autolinking script exists
-      - name: Verify expo-modules-autolinking
-        run: ls -l node_modules/expo-modules-autolinking/gradle/ || echo "expo-modules-autolinking not found!"
-
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
-      - name: Build Android Release APK
+      - name: Build Android release
         run: |
           cd android
+          ./gradlew clean
           ./gradlew assembleRelease --no-daemon
-
-      - name: Upload Release APK artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-release
-          path: android/app/build/outputs/apk/release/app-release.apk
