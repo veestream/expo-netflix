@@ -40,4 +40,5 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation("com.facebook.react:react-android")
     implementation("com.facebook.react:hermes-android")
+    implementation "androidx.core:core-splashscreen:1.0.1"
 }
