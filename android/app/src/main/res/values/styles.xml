@@ -13,9 +13,10 @@
         <!-- Correct references to resources -->
         <item name="android:windowSplashScreenBackground">@color/splashscreen_background</item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/splashscreen_logo</item>
+        <!-- Ensure this points to a valid style -->
         <item name="android:postSplashScreenTheme">@style/AppTheme</item>
-        <!-- Enum value must be valid -->
-        <item name="android:windowSplashScreenBehavior">icon_background</item>
+        <!-- Corrected: use a color resource instead of raw string -->
+        <item name="android:windowSplashScreenIconBackground">@color/icon_background</item>
     </style>
 
 </resources>

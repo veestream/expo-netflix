@@ -3,7 +3,7 @@
     <color name="splashscreen_background">#000000</color>
 
     <!-- Icon background color -->
-    <color name="iconBackground">#FFFFFF</color>
+    <color name="icon_background">#FFFFFF</color>
 
     <!-- Primary colors -->
     <color name="colorPrimary">#000000</color>
