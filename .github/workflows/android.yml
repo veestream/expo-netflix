@@ -1,15 +1,6 @@
-name: Android Build
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -19,7 +10,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Install Kotlin 1.6.21
+      - name: Install Kotlin 1.6.0
         run: |
           curl -s https://get.sdkman.io | bash
           source "$HOME/.sdkman/bin/sdkman-init.sh"

@@ -1,6 +1,5 @@
 buildscript {
     ext {
-        // Pin Kotlin to 1.6.21 to match React Native Gradle plugin expectations
         kotlin_version = "1.6.0"
     }
     repositories {
@@ -16,6 +15,16 @@ buildscript {
 plugins {
     id("com.android.application") version "8.2.1" apply false
     id("com.facebook.react") apply false
+}
+
+allprojects {
+    configurations.all {
+        resolutionStrategy {
+            force "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+            force "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+            force "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+        }
+    }
 }
 
 rootProject.name = "expo-netflix"
