@@ -23,8 +23,8 @@ jobs:
         run: |
           curl -s https://get.sdkman.io | bash
           source "$HOME/.sdkman/bin/sdkman-init.sh"
-          sdk install kotlin 1.6.21
-          sdk use kotlin 1.6.21
+          sdk install kotlin 1.6.0
+          sdk use kotlin 1.6.0
 
       - name: Install Node.js
         uses: actions/setup-node@v3
