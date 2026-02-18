@@ -22,6 +22,15 @@
     @com.facebook.react.bridge.ReactModule <fields>;
 }
 
+# Keep Kotlin metadata and reflection
+-keep class kotlin.Metadata { *; }
+-keep class kotlin.reflect.** { *; }
+
+# Keep OkHttp (used by React Native networking)
+-keep class okhttp3.** { *; }
+-dontwarn okhttp3.**
+
 # Do not warn about missing classes
 -dontwarn com.facebook.react.**
 -dontwarn expo.modules.**
+-dontwarn kotlin.**

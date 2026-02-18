@@ -1,6 +1,5 @@
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
-apply plugin: "expo.modules.autolinking"
 
 android {
     namespace "com.exponetflix"
