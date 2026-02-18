@@ -9,7 +9,7 @@
     </style>
 
     <!-- Splash Screen Theme -->
-    <style name="Theme.SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.SplashScreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Correct references to resources -->
         <item name="android:windowSplashScreenBackground">@color/splashscreen_background</item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/splashscreen_logo</item>
