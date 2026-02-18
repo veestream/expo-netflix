@@ -31,6 +31,7 @@
     "expo-asset": "~12.0.12",
     "expo-device": "~8.0.10",
     "expo-font": "~14.0.11",
+    "expo-modules-autolinking": "^3.0.24",
     "expo-splash-screen": "^31.0.13",
     "expo-updates": "~29.0.16",
     "prop-types": "^15.7.2",
@@ -62,6 +63,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-native": "^4.0.0",
     "prettier": "^2.8.4"
+    "@react-native-community/cli": "latest",
   },
   "prettier": {
     "singleQuote": true,
